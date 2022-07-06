@@ -34,7 +34,7 @@ def answer_checker(question,answer):
         clear.clear_console()
         print("Please enter a valid whole number")
         return answer_checker(question,answer)
-
+    # keeps it from breaking when user types string
     try:
 
         attempt_number = 0
@@ -44,21 +44,23 @@ def answer_checker(question,answer):
             print(question)
             chosen_number = input(colours.colour_yellow("\nYou can type xxx to quit")+"\nAnswer here: ")
 
+            # Checks if the user has quit or typed nothing
             if chosen_number == "":
-                return error()
+                return error() # gives error message
             if chosen_number == "xxx":
                 return chosen_number
 
             chosen_number = int(chosen_number)
             attempt_number += 1
             # User question feedback
+            # check if the user is correct
             if chosen_number == answer:
 
                 clear.clear_console()
                 print(colours.colour_green("You got it correct!"))
-                time.sleep(2)
+                time.sleep(1)
                 clear.clear_console()
-
+                # return response data
                 return {
                     "question": question,
                     "attempts": attempt_number,
@@ -69,15 +71,15 @@ def answer_checker(question,answer):
             elif attempt_number < 3:
                 clear.clear_console()
                 print(colours.colour_orange("Incorrect, try again"))
-                time.sleep(2)
+                time.sleep(1)
                 clear.clear_console()
 
         clear.clear_console()
-        # Tells user the correct answer and waits 2 seconds
+        # Tells user the correct answer and waits 1 second
         print(colours.colour_red("The answer was {}, let's try another question".format(answer)))
-        time.sleep(2)
+        time.sleep(1)
         clear.clear_console()
-        # Returns question information
+        # Returns response data
         return {
             "question": question,
             "attempts": attempt_number,

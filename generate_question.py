@@ -4,7 +4,6 @@ def generate(low,high,number_count,operations):
     answer = -1
     answer = -1
     while answer < 0:
-        removed_operations = []
         numbers = []
         divided = False
         # Loops for each number in the operation
@@ -12,14 +11,14 @@ def generate(low,high,number_count,operations):
             
             number = random.randint(low,high) # Generate a random number
 
-            if divided != False: # Checks if there was a division sum
+            if divided != False: # Checks if there was a division sum then adds it
                 numbers.append(divided)
             else:
                 numbers.append(number)
 
-            if i != number_count-1:
+            if i != number_count-1: # Stops operators from appearing at the end without a following number
                 
-                op = random.choice(operations)
+                op = random.choice(operations) # Picks random operator
                 while op in numbers:
                     op = random.choice(operations)
                 
@@ -32,7 +31,7 @@ def generate(low,high,number_count,operations):
 
                 numbers.append(op) # Creates operation
 
-        question = "".join([str(item) for item in numbers]) # Print all the items in the table as a string
+        question = "".join([str(item) for item in numbers]) # Print all the items in the dictionary as a string
         answer = eval(question)
     
     return { # Returns table of the question string and answer

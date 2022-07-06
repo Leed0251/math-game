@@ -1,4 +1,6 @@
 class Decorate_text():
+
+    # Input for the main class e.g. Decorate_text(decororation,text)
     def __init__(self,decoration,text):
         self.decor = decoration
         self.text = text
